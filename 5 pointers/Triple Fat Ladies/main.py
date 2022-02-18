@@ -1,23 +1,7 @@
-# t = int(input())
+# through experimentation it was discovered that 192 + 250n ends in 888
 
-d = dict()
+t = int(input())
 
-i = 0
-while True:
-    a = i
-    b = a * a * a
-    if a % 10000000 == 0:
-        print(a, b)
-    if str(i)[::-3] == 888:
-        print("YOOOO", a, b)
-        d[a] = b
-        if b > 100:
-            break
-
-    i += 1
-
-print(d)
-# for i in range(t):
-#     k = int(input())
-
-
+for i in range(t):
+    k = int(input())
+    print((((k - 192) // 250)+1) * 250 + 192)
