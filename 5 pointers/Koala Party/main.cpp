@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <utility>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
 #define ld long double
@@ -20,19 +21,44 @@ int main(){
   cin >> n;
   ul arr[n];
   repeat(i, n)  cin >> arr[i];
+
   sort(arr, arr + n);
   ul greatest = arr[n - 1];
-  ul ans = 0, diff;
+  ul ans = 0;
+  ll diff;
+  int bowls = 1;
+  ull oreos_used = 0;
+  ull val = arr[0]; // value of elements that are the same
+  bool exceeded;
   for(int i = 1; i < n - 1; i++){
-    diff = 0;
-    for(int j = 1; j < n - 1; j++){
-      diff += j * (arr[j] - arr[j - 1]);
-      if (diff > greatest) greatest = j;
-
+    oreos_used -= val - arr[i - 1];
+    // val = arr[i];
+    // bowls--;
+    exceeded = false;
+    while(bowls < n - 1){ 
+      oreos_used += bowls * (arr[bowls] - arr[bowls - 1]);
+      if(oreos_used > greatest){
+        oreos_used -= bowls * (arr[bowls] - arr[bowls - 1]);
+        exceeded = true;
+        break;
+      }
+      bowls++;
     }
-    ul last_diff = arr[n - 1] - arr[n - 2];
-    if(last_diff > 0) 
-    if(diff > greatest) greatest = diff;
+    diff = greatest - oreos_used;
+    val = arr[bowls - (exceeded ? 1 : 0)];
+    if(diff >= 0 && diff % n == 0){
+      bowls++;
+      if (bowls > ans) ans = bowls;
+      bowls--;
+      val += diff / n; 
+    }
+    else{
+      if (bowls > ans) ans = bowls;
+    }
+    bowls++;
+    if(bowls >= n - 1) break;
   }
+  cout << ans;
 
 }
+//[1, 3, 5][1, 2, 5, 6]
