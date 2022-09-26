@@ -1,0 +1,3 @@
+C:/Users/USER/Documents/GitHub/Competitive Programming Solutions/7 pointers/2spooky/cmake-build-debug/CMakeFiles/2spooky.dir
+C:/Users/USER/Documents/GitHub/Competitive Programming Solutions/7 pointers/2spooky/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/USER/Documents/GitHub/Competitive Programming Solutions/7 pointers/2spooky/cmake-build-debug/CMakeFiles/rebuild_cache.dir
